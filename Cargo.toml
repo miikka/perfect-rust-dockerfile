@@ -1,0 +1,14 @@
+[package]
+name = "perfect-rust-dockerfile"
+version = "0.1.0"
+edition = "2024"
+
+[[bin]]
+name = "app"
+path = "src/main.rs"
+
+[dependencies]
+axum = "0.8.9"
+tokio = { version = "1.52.1", features = ["macros", "rt-multi-thread"] }
+tracing = "0.1.44"
+tracing-subscriber = "0.3.23"
