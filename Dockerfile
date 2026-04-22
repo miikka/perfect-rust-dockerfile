@@ -35,4 +35,6 @@ COPY --from=builder /build/target/release/$BINARY_NAME /app/app
 # Customization point: if you need files other than the binary, copy them into the image here.
 # COPY static/ static/
 
+# No `tini` here as the entrypoint, so unless your app handles signals explicitly, use
+# `docker run --init` to ensure that Ctrl-C and SIGTERM work.
 CMD ["/app/app"]
