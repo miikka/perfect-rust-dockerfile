@@ -16,6 +16,8 @@ RUN --mount=type=cache,target=/usr/local/cargo/registry \
 FROM chef AS builder
 ARG BINARY_NAME
 RUN mkdir -p /empty
+# cargo-chef magic happens here: we build dependencies based only on `recipe.json`,
+# so changes to source files do not retrigger dependency build
 COPY --from=planner /build/recipe.json recipe.json
 RUN --mount=type=cache,target=/usr/local/cargo/registry \
     --mount=type=cache,target=/usr/local/cargo/git/db \
